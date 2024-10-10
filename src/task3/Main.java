@@ -14,7 +14,8 @@ public class Main {
         Building building = new Building(rooms, 1);
         System.out.println("Lamps: " + countLampsInBuilding(building));
         System.out.println("Windows: " + countWindowsInBuilding(building));
-        System.out.println("Is normal?: " + isNormal(building));
+        System.out.println("Rooms: " + countRoomsInBuilding(building));
+        System.out.println("Is normal: " + isNormal(building));
     }
 
     private static int countLampsInBuilding(Building b) {
@@ -37,7 +38,11 @@ public class Main {
         return count;
     }
 
+    private static int countRoomsInBuilding(Building b) {
+        return b.getRooms().size();
+    }
+
     private static boolean isNormal(Building b) {
-        return b.getNumberOfFloors() >= b.getRooms().size();
+        return b.getNumberOfFloors() >= countRoomsInBuilding(b);
     }
 }
